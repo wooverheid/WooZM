@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             setElementContent('woogle_date_result', 
                 [
                     infobox.foi_publishedDate ? `[Gepubliceerd: ${infobox.foi_publishedDate}]` : '',
-                    infobox.dc_description
+                    infobox.dc_description ? infobox.dc_description : infobox.dc_title
                 ].filter(Boolean).join(' ')
             );
             

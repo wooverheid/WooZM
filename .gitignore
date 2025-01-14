@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Everything in data that is not woogle_config.json
+data/*
+!data/woogle_config.json
+
+# Everything in assets/img that is not woogle.svg or favicon.ico
+assets/img/*
+!assets/img/woogle.svg
+!assets/img/favicon.ico

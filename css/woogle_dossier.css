@@ -1,0 +1,321 @@
+h3 {
+    padding: 0 !important;
+  }
+  
+  .hierarchy-list {
+    margin-left: 40px;
+  }
+  
+  .hierarchy-list-item {
+    margin-left: 20px;
+    list-style: none;
+  }
+  
+  .infobox {
+    /* margin-top: 30px;
+    margin-right: 80px; */
+    margin: 20px;
+    width: 100%;
+  }
+  
+  h1, h2 {
+    margin-top:40px;
+    margin-left: 40px;
+  }
+  
+  .al-r {
+    text-align: right;
+  }
+  
+  .documents {
+    margin: 40px;
+  }
+  
+  em {
+    font-style: inherit;
+    font-weight: 700;
+    position: relative;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  em:after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    background: rgba(37, 139, 248, 0.08);
+    pointer-events: none;
+  }
+  
+  a:hover {
+    cursor: pointer;
+  }
+  
+  /* RESULTS */
+  
+  .result {
+    margin: 40px;
+    width: 40em;
+  }
+  
+  .result em {
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  .result-title a,
+  .result li a {
+    text-decoration: none;
+    color:#033bbf;
+    font-weight:normal;
+  }
+  
+  .result-title a:hover,
+  .result li a:hover {
+    text-decoration: underline;
+  }
+  
+  .result-title {
+    margin: 0;
+    font-size: 20px !important;
+  }
+  
+  .meta-web-address {
+    color: #006621;
+    font-style: normal;
+    font-size: 14px;
+    display: inline-block;
+  }
+  
+  .ad {
+    background-color: #59946b;
+    color: white;
+    border: 1px solid #59946b;
+    border-radius: 2px;
+    font-size: 11px;
+    float:left;
+    width: 17px;
+    margin: 2px 3px 0 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .action-menu-web-address {
+    display: inline-block;
+  }
+  
+  .result i {
+    color: #006621;
+  }
+  
+  .meta-description {
+    color: #545454;
+    font-size: small;
+    line-height: 1.4;
+    word-wrap: break-word;
+  }
+  
+  .meta-attributes {
+    color: #545454;
+    font-size: small;
+    line-height: 1.4;
+    word-wrap: break-word;
+    margin-top: 10px;
+  }
+  
+  .date-result {
+    color:#808080;
+  }
+  
+  .tags {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .15rem .40rem;
+    position: relative;
+    text-decoration: none;
+    font-size: 80%;
+    border-radius: 5px;
+    margin-right: .5rem;
+    margin-top: .4rem;
+    margin-bottom: .5rem;
+    color: rgb(88, 88, 88);
+    border-width: 0px;
+    background-color: rgb(240, 242, 246);
+  }
+  
+  .tags:hover {
+    color: black;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+  }
+  
+  .link {
+    text-decoration: none;
+    padding-right: 15px;
+  }
+  
+  .woo-table {
+    margin: 40px;
+    max-width: 90%;
+  }
+  
+  .big-card {
+    text-decoration: none;
+    margin: 20px;
+    display: block;
+    border: 1px solid #f0f0f0;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1);
+    overflow-wrap: break-word;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden; /* This will prevent any child elements from creating scrollbars */
+  }
+  
+  body {
+    background-color: #fcfcfc;
+  }
+  
+  .woogle-search{
+    margin: 40px;
+    width:fit-content
+  }
+  
+  .color-A {
+    background-color: #75fa6e !important;
+    color: black !important;
+    margin: 0 !important
+  }
+  
+  .color-B {
+    background-color: #add200 !important;
+    color: black !important;
+    margin: 0 !important
+  }
+  
+  .color-C {
+    background-color: #d1a500 !important;
+    color: black !important;
+    margin: 0 !important
+  }
+  
+  .color-D {
+    background-color: #e86f00 !important;
+    color: black !important;
+    margin: 0 !important
+  }
+  
+  .color-E {
+    background-color: #c23f3f !important;
+    color: black !important;
+    margin: 0 !important
+  }
+
+  /* extra styling */
+  /* Adjust the infobox and table styles */
+  .infobox {
+    margin: 40px 80px 40px 40px;
+    width: auto;
+    
+  }
+
+  .row.socials {
+    margin: 40px;
+  }
+  
+  .infobox table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .infobox th,
+  .infobox td {
+    padding: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    font-size: 14px;
+  }
+  
+  .infobox th {
+    text-align: left;
+    white-space: nowrap; /* Prevent wrapping in header */
+    padding-right: 15px; /* Add some space between header and content */
+    min-width: 150px;
+  }
+  
+  .infobox td {
+    min-width: 60%; /* Ensure content column takes up most of the space */
+  }
+  
+  /* Adjust the big-card and column styles */
+  .big-card > .row {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .big-card > .row > .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+  
+  /* Adjust the first column to be slightly wider */
+  .big-card > .row > .col-md-6:first-child {
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
+  
+  /* Adjust the second column to take up the remaining space */
+  .big-card > .row > .col-md-6:last-child {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+  
+  /* Remove any Bootstrap gutter */
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  .col-md-6 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  
+  /* Ensure content within columns doesn't overflow */
+  .result, .documents, .woogle-search, .infobox {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 992px) {
+    .big-card > .row {
+      flex-direction: column;
+    }
+  
+    .big-card > .row > .col-md-6,
+    .big-card > .row > .col-md-6:first-child,
+    .big-card > .row > .col-md-6:last-child {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  
+    
+  }

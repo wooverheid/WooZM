@@ -1,0 +1,200 @@
+{
+  "general": {
+    "identifier": "ab3",
+    "appearance": {
+      "fonts": {
+        "bodyFont": "'Times New Roman', serif",
+        "headerFont": "'Times New Roman', serif",
+        "uiFont": "'Times New Roman', serif"
+      },
+      "colors": {
+        "accentColor": "#c10134"
+      }
+    }
+  },
+  "dossier": {
+    "metadata": [
+      {
+        "key": "dc_identifier",
+        "label": "Identifier",
+        "visible": true,
+        "order": 0,
+        "meta-attributes": false
+      },
+      {
+        "key": "dc_publisher_name",
+        "label": "Aanbieder (Naam)",
+        "visible": true,
+        "order": 1,
+        "meta-attributes": false
+      },
+      {
+        "key": "dc_title",
+        "label": "Titel",
+        "visible": true,
+        "order": 2,
+        "meta-attributes": false
+      },
+      {
+        "key": "tooiwl_topic",
+        "label": "Thema",
+        "visible": true,
+        "order": 3,
+        "meta-attributes": false
+      },
+      {
+        "key": "dc_type_description",
+        "label": "Type",
+        "visible": true,
+        "order": 4,
+        "meta-attributes": true
+      },
+      {
+        "key": "foi_publishedDate",
+        "label": "Publicatiedatum",
+        "visible": true,
+        "order": 5,
+        "meta-attributes": false
+      },
+      {
+        "key": "dc_date_year",
+        "label": "Jaar",
+        "visible": true,
+        "order": 6,
+        "meta-attributes": true
+      },
+      {
+        "key": "dc_publisher",
+        "label": "Aanbieder (Code)",
+        "visible": true,
+        "order": 7,
+        "meta-attributes": true
+      },
+      {
+        "key": "foi_isWoo",
+        "label": "Aanbieder valt onder Woo",
+        "visible": true,
+        "order": 8,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_nrDocuments",
+        "label": "Totaal aantal documenten",
+        "visible": true,
+        "order": 9,
+        "meta-attributes": false
+      },
+      {
+        "key": "dc_source",
+        "label": "Bron",
+        "visible": true,
+        "order": 10,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_retrievedDate",
+        "label": "Verkregen op",
+        "visible": true,
+        "order": 11,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_nrPagesInDossier",
+        "label": "Aantal pagina's in dossier",
+        "visible": true,
+        "order": 12,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_isAdjourned",
+        "label": "Verdaagd?",
+        "visible": true,
+        "order": 13,
+        "meta-attributes": false
+      },
+      {
+        "key": "dc_description",
+        "label": "Beschrijving",
+        "visible": true,
+        "order": 14,
+        "meta-attributes": false
+      },
+      {
+        "key": "dc_creator",
+        "label": "Eigenaar",
+        "visible": true,
+        "order": 15,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_requestDate",
+        "label": "Verzoekdatum",
+        "visible": true,
+        "order": 16,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_decisionDate",
+        "label": "Besluitdatum",
+        "visible": true,
+        "order": 17,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_requester",
+        "label": "Verzoeker",
+        "visible": true,
+        "order": 18,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_requestText",
+        "label": "Verzoektekst",
+        "visible": true,
+        "order": 19,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_decisionText",
+        "label": "Besluittekst",
+        "visible": true,
+        "order": 20,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_valuation",
+        "label": "Beoordeling",
+        "visible": true,
+        "order": 21,
+        "meta-attributes": false
+      },
+      {
+        "key": "foi_page_title",
+        "label": "Titel",
+        "visible": true,
+        "order": 22,
+        "meta-attributes": false
+      }
+    ],
+    "metadataLayout": "right"
+  },
+  "settings": {
+    "pagination": {
+      "enabled": true,
+      "pageSize": 10
+    },
+    "sorting": {
+      "enabled": true,
+      "defaultField": "dc_date_year",
+      "defaultOrder": "desc"
+    }
+  },
+  "search": {
+    "layout": {
+      "direction": "ltr"
+    }
+  },
+  "logo": {
+    "path": "/assets/img/ab3.png"
+  }
+}

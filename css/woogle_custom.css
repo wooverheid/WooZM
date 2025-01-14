@@ -1,0 +1,99 @@
+/**
+ * Customization 
+ */
+ :root { 
+    --accent-color: #656f79; 
+    
+    --bodyFont: Arial, sans-serif !important;
+    --headerFont: 'Helvetica', Arial, sans-serif;
+    --uiFont: 'Tahoma', Arial, sans-serif;
+
+  
+
+    --accent-color-darker: hsl(from var(--accent-color) h s calc(l - 10%));
+    --accent-color-lighter: hsl(from var(--accent-color) h s calc(l + 10%));
+  }
+  
+  body {
+    font-family: var(--bodyFont) !important;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--headerFont) !important;
+  }
+  .sui-search-box__submit,
+  .sui-select,
+  .sui-facet__title,
+  .woogle-facet-value,
+  .woogle-pagination-nr {
+    font-family: var(--uiFont) !important;
+  }
+
+  .navbar-nav, .form-control, button, input, select, textarea,
+  .sui-layout, .sui-layout-body, .sui-layout-sidebar,
+  .sui-search-box__submit, .sui-select, .sui-facet__title,
+  .woogle-facet-value, .woogle-pagination-nr, .sui-layout-main-body,
+  .sui-result__body, .paging-info, #tags {
+    font-family: var(--uiFont) !important;
+  }
+
+  .accent-color-border {
+    border-bottom: 3px solid var(--accent-color);
+    
+  }
+  .accent-color-border-top {
+    border-top: 3px solid var(--accent-color);
+  }
+  
+  .sui-layout-body {
+    font-family: var(--bodyFont, var(--bs-body-font-family)) !important;
+  }
+  
+  .sui-layout-sidebar {
+    font-family: var(--facetFont, var(--bs-body-font-family)) !important;
+  }
+  
+
+  /* Add styles for the search button */
+  .search-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: var(--accent-color-darker);
+  }
+
+  .search-box {
+    flex-shrink: 0;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 7px;
+    margin-left: 10px;
+    text-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px;
+    color: white;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset, rgba(59, 69, 79, 0.05) 0px 1px 0px;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--accent-color) 80%, white),
+      color-mix(in srgb, var(--accent-color) 80%, black)
+    );
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .search-box:hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 0px 1px inset, rgba(59, 69, 79, 0.3) 0px 2px 4px;
+    --accent-color-darker: hsl(from var(--accent-color) h s calc(l - 15%));
+    --accent-color-lighter: hsl(from var(--accent-color) h s calc(l + 15%));
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--accent-color) 90%, white),
+      color-mix(in srgb, var(--accent-color) 90%, black)
+    );
+  }
+
+  

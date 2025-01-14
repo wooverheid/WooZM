@@ -1,0 +1,327 @@
+/*
+
+main.css: WooGLe specific styling
+
+Author: Maik Larooij
+Date updated: 2022/12/15
+
+*/
+
+.woogle-title {
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  padding-bottom: 0px;
+  padding-top: 25px;
+}
+
+.woogle-subtitle {
+  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  padding-bottom: 15px;
+  padding-top: 0px;
+}
+
+.al-r {
+  text-align: right;
+}
+
+.woo-table {
+  margin: 40px;
+  max-width: 90%;
+}
+
+/* .woogle-search {
+  padding-top: 15px;
+  max-width: 40%;
+} */
+
+.woogle-nav {
+  margin-left: auto; 
+  margin-right: 15px;
+}
+
+
+/* Change background color of navbar links on hover */
+
+.nav-link:hover {
+  background-color: #e6e6e6;
+  /* Yellow */
+  color: #000000;
+  /* Black */
+}
+
+
+/* Change background color of navbar links on active */
+
+.nav-link:active {
+  background-color: #808080;
+  /* Red */
+  color: #000000;
+  /* Black */
+}
+
+
+/* Change background color of navbar links for current page */
+
+.nav-link.current {
+  background-color: #656f79;
+  /* Green */
+  color: white;
+  /* White */
+}
+
+.menu-item {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.woo-about {
+  padding-top: 40px;
+  width: 60%;
+  min-width: 340px;
+  padding-bottom: 100px;
+}
+
+.uva-logo {
+  display: flex;
+  margin: auto;
+}
+
+.center {
+  margin: auto;
+}
+
+/* RESULTS */
+
+.results {
+  max-width: 40%;
+}
+
+.woogle-result {
+  margin: 25px;
+}
+
+.woogle-result em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+.woogle-result-title a {
+  text-decoration: none;
+  color:#033bbf;
+  font-weight:normal;
+}
+
+.woogle-result-title a:hover {
+  text-decoration: underline;
+}
+
+.woogle-result-title {
+  margin: 0;
+  font-size: 18px !important;
+}
+
+.woogle-result-description {
+  color: #5a5a5a;
+  font-size: small;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+#tags {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .15rem .40rem;
+  position: relative;
+  text-decoration: none;
+  font-size: 70%;
+  border-radius: 5px;
+  margin-right: .5rem;
+  margin-top: .4rem;
+  margin-bottom: .5rem;
+  color: rgb(88, 88, 88);
+  border-width: 0px;
+  background-color: rgb(240, 242, 246);
+}
+
+#tags:hover {
+  color: black;
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.2);
+}
+
+.woogle-result-attributes, .woogle-pagination, .woogle-result-pages {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.woogle-pagination {
+  margin-bottom: 40px;
+}
+
+.woo-facets {
+  float: left;
+  margin-left: 15px;
+}
+
+.woo-facet {
+  list-style: none;
+  font-size: small;
+  padding-left: 0;
+}
+
+.woo-facet-value {
+  padding: 0;
+  text-align: left;
+  font-size: 12px;
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: var(--facetFont);
+  /*input has OS specific font-family*/
+  color: #033bbf;
+  cursor: pointer;
+}
+
+.woo-expand-collapse-button {
+  cursor: pointer;
+}
+
+.woo-expand-collapse-button:hover, .woo-facet-value:hover {
+  text-decoration: underline;
+}
+
+.woo-expand-hits, .woo-collapse-hits {
+  float: right;
+}
+
+.woo-sponsors {
+  text-align: center;
+  margin: 15px;
+}
+
+.woo-sponsors-img {
+  max-height: 100px;
+}
+
+.iframe-container {
+  display: flex; width: 100%; height: 100%; flex-direction: column; overflow: hidden;
+}
+
+.breadcrumbs {
+  margin-bottom: 1rem;
+}
+
+.crumb {
+  font-size: 12px; 
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.woogle-page-hit {
+  margin: 25px;
+}
+
+.woo-ordering {
+  width: 25%;
+}
+
+#contact-submit {
+  float: right;
+}
+
+#docresult-div {
+  justify-content: space-evenly;
+}
+
+.dis-none {
+  display: none;
+}
+
+.dis-block {
+  display: block;
+}
+
+.td-none {
+  text-decoration: none;
+}
+
+
+.woogle-subtitle em {
+  position: relative;
+  color: #3a56e4;
+  font-weight: 700;
+  font-style: inherit;
+}
+.woogle-subtitle em:after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: calc(100% + 6px);
+  background: rgba(37, 139, 248, 0.08);
+  pointer-events: none;
+}
+
+.navbar-pl {
+  padding-left: 24px;
+  font-size: xx-large;
+  color: black;
+}
+
+.woogle-logo-sm {
+  height: 1.5em;
+}
+
+.woogle-logo-lg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  height:76px;
+}
+
+/*Customization */
+
+/* CSS for left sidebar */
+.layout-ltr .sui-layout-sidebar {
+  order: 1;
+}
+
+.layout-ltr .sui-layout-main {
+  order: 2;
+}
+
+/* CSS for right sidebar */
+.layout-rtl .sui-layout-sidebar {
+  order: 2;
+}
+
+.layout-rtl .sui-layout-main {
+  order: 1;
+}
+
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}

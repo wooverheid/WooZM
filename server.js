@@ -28,6 +28,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+app.get('/', (req, res) => {
+  res.redirect('/config');
+});
+
 app.get('/config', (req, res) => {
   // config.html
   res.sendFile(path.join(__dirname, 'config.html'));

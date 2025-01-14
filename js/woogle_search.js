@@ -8,6 +8,8 @@ if (!publisher_code) {
   publisher_code = 'woogle_config';
 }
 
+const config = fetch(`/data/${publisher_code}.json`).then(response => response.json());
+
 function loadLogo() {
   const logoElement = document.querySelector('.woogle-logo-sm');
   if (!logoElement) return;
@@ -241,7 +243,7 @@ window.onload = function () {
         element.onclick = function (e) {
           e.preventDefault();
           let href = new URL(window.location.href);
-          const publisher = href.searchParams.get('publisher-code');
+          
           href.searchParams.set('page', this.value);
           
           // Remove 'infobox' and 'publisher' from the visible URL
@@ -249,7 +251,7 @@ window.onload = function () {
           href.searchParams.delete('publisher');
           
           window.history.pushState({}, '', href.toString());
-          getResults(false, publisher);  // Pass publisher to getResults
+          getResults(false, config.general.identifier);  // Pass publisher to getResults
         }
       });
 
@@ -407,6 +409,7 @@ async function getResults(refreshSidebar, publisher) {
   
   // Remove 'publisher' from the visible URL, but keep it for the API call
   const publisherParam = publisher || href.searchParams.get('publisher');
+  console.log('publisher:', publisherParam);
   href.searchParams.delete('publisher');
 
   // Update the visible URL without reloading the page
@@ -875,14 +878,17 @@ function updatePagination(currentPage, totalPages) {
     element.onclick = function (e) {
       e.preventDefault();
       let href = new URL(window.location.href);
-      const publisher = href.searchParams.get('publisher-code');
+      
       href.searchParams.set('page', this.value);
       
       href.searchParams.delete('infobox');
       href.searchParams.delete('publisher');
       
       window.history.pushState({}, '', href.toString());
-      getResults(false, publisher);
+
+      config.then(config => {
+        getResults(false, config.general.identifier);
+      });
     }
   });
 }

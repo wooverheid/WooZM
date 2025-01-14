@@ -1,0 +1,12 @@
+version: '3'
+services:
+  woozm:
+    image: 'woozm'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./data:/home/node/app/data
+      - ./assets:/home/node/app/assets

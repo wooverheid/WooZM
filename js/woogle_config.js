@@ -332,8 +332,6 @@ function uploadLogo() {
     formData.append('logo', file, `${publisher}.${file.name.split('.').pop()}`); // Specify the desired file name
 
     formData.append('config', JSON.stringify({"general": {"identifier": publisher}})); // Add the publisher code to the form data
-
-    console.log(formData);
     
     fetch('/api/upload_logo', {
       method: 'POST',

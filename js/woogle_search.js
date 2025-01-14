@@ -409,7 +409,6 @@ async function getResults(refreshSidebar, publisher) {
   
   // Remove 'publisher' from the visible URL, but keep it for the API call
   const publisherParam = publisher || href.searchParams.get('publisher');
-  console.log('publisher:', publisherParam);
   href.searchParams.delete('publisher');
 
   // Update the visible URL without reloading the page

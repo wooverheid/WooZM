@@ -178,7 +178,11 @@ async function generateFiles() {
       'js/woogle_dossier.js',
       'README.md',
       'server.js',
-      'package.json'
+      'package.json',
+      'package-lock.json',
+      'Dockerfile',
+      'docker-compose.yml',
+      '.dockerignore'
     ];
 
     for (const file of files) {

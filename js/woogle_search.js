@@ -686,7 +686,7 @@ function updatePagingInfo(data) {
 
   // Add dossier info if present
   if (data.parameters.pid) {
-    pagingInfoText += ` in dossier(s) <strong>${data.parameters.pid}</strong>`;
+    pagingInfoText += ` in <strong>${data.parameters.pid}</strong>`;
   }
 
   const pagingInfoElement = document.querySelector('.paging-info');

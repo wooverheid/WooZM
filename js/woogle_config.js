@@ -199,34 +199,6 @@ async function generateFiles() {
       zip.file(`woogle/assets/img/${publisher}.${logoFile.name.split('.').pop()}`, logoFile);
     }
 
-    // Add the current logo file to the ZIP
-    // const logoElement = document.querySelector('.woogle-logo-lg');
-
-    
-    // console.log('Logo element:', logoElement);
-    // if (logoElement && logoElement.src) {
-    //   try {
-    //     const logoUrl = new URL(logoElement.src, window.location.origin);
-    //     const logoPath = logoUrl.pathname;
-        
-    //     // Fetch the logo file
-    //     const logoResponse = await fetch(logoPath);
-    //     if (logoResponse.ok) {
-    //       const logoBlob = await logoResponse.blob();
-    //       const logoExtension = logoPath.split('.').pop();
-          
-    //       // Add the logo to the zip file
-    //       zip.file(`woogle/assets/img/${publisher_code}.${logoExtension}`, logoBlob);
-          
-    //       console.log(`Logo added to ZIP: logo.${logoExtension}`);
-    //     } else {
-    //       throw new Error(`Failed to fetch logo: ${logoResponse.statusText}`);
-    //     }
-    //   } catch (error) {
-    //     console.warn(`Warning: Could not add logo to the zip file. ${error.message}`);
-    //   }
-    // }
-
     const content = await zip.generateAsync({ type: 'blob' });
     const element = document.createElement('a');
     element.href = URL.createObjectURL(content);

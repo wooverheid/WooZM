@@ -184,21 +184,44 @@ async function saveConfig() {
     hasUnsavedChanges = false;
 
     const alert = document.createElement('div');
-    alert.classList.add('alert', 'alert-success', 'alert-dismissable', 'fade', 'show');
+    alert.classList.add('alert', 'alert-success', 'alert-dismissible', 'fade', 'show');
+    alert.role = 'alert';
 
     alert.innerHTML = 'Gelukt! Uw gepersonaliseerde Woogle pagina staat op deze url: <a href="https://woozm.wooverheid.nl/search?publisher-code=' + updatedConfig.general.identifier + '">https://woozm.wooverheid.nl/search?publisher-code=' + updatedConfig.general.identifier + '</a>';
 
+    // Add close button
+    const alertClose = document.createElement('button');
+    alertClose.classList.add('btn-close');
+    alertClose.setAttribute('data-bs-dismiss', 'alert');
+    alertClose.setAttribute('aria-label', 'Close');
+    alert.appendChild(alertClose);
+
     const title = document.querySelector('h1');
     title.insertAdjacentElement('afterend', alert);
+
+    // scroll to top
+    window.scrollTo(0, 0);
     
     return true;
   } catch (error) {
     const alert = document.createElement('div');
-    alert.classList.add('alert', 'alert-danger', 'alert-dismissable', 'fade', 'show');
+    alert.classList.add('alert', 'alert-danger', 'alert-dismissible', 'fade', 'show');
+    alert.role = 'alert';
     alert.innerText = 'Er is iets misgegaan bij het opslaan van de configuratie. Probeer het opnieuw.';
+    
+    // Add close button
+    const alertClose = document.createElement('button');
+    alertClose.classList.add('btn-close');
+    alertClose.setAttribute('data-bs-dismiss', 'alert');
+    alertClose.setAttribute('aria-label', 'Close');
+    alert.appendChild(alertClose);
     
     const title = document.querySelector('h1');
     title.insertAdjacentElement('afterend', alert);
+
+    // scroll to top
+    window.scrollTo(0, 0);
+    
     return false;
   }
 }

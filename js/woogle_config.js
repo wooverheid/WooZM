@@ -51,7 +51,7 @@ let selectedPublisher = null; // New variable to store the selected publisher
 // Fetch initial configuration
 async function fetchConfig() {
   try {
-    const response = await fetch('/api/read_config/' + selectedPublisher);
+    const response = await fetch('/api/read_config' + `/${selectedPublisher}` ? selectedPublisher : '');
     if (!response.ok) throw new Error('Failed to fetch configuration');
     config = await response.json();
     updateUIFromConfig();
@@ -59,6 +59,36 @@ async function fetchConfig() {
     console.error('Error fetching configuration:', error);
   }
 }
+
+function updateUIDefaults() {
+
+  document.getElementById('font-picker-body').value = 'Arial, sans-serif';
+  document.getElementById('font-picker-header').value = 'Arial, sans-serif';
+  document.getElementById('font-picker-ui').value = 'Arial, sans-serif';
+  document.getElementById('accent-color-picker').value = '#abc4b0';
+  document.getElementById('layout-direction').value = 'ltr';
+  document.getElementById('metadataLayout').value = 'right';
+
+  document.getElementById('logoImage').src = '/assets/img/woogle.svg';
+  document.getElementById('logoPreview').classList.remove('d-none');
+
+  document.getElementById('font-picker-body').dispatchEvent(new Event('change'));
+  updateColorPreview();
+  
+  updateMetadataFieldsDefault();
+}
+
+function updateMetadataFieldsDefault() {
+  fetch('/api/read_config')
+    .then(response => response.json())
+    .then(data => {
+      config.dossier.metadata = data.infobox;
+      updateMetadataFields();
+    })
+    .catch(error => {
+      console.error('Error fetching metadata fields:', error);
+    });
+  }
 
 // Update UI elements based on current configuration
 function updateUIFromConfig() {

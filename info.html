@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WooZM - Informatie</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/woogle_config.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/woogle_search.css">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+  <!--Javascript-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+  <script src="js/woogle_config.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Main navigation">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img class="woogle-logo-sm" src="assets/img/woogle.svg" alt="Woogle Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="config">Configuratie</a></li>
+            <li class="nav-item"><a class="nav-link" href="search">Zoeken</a></li>
+            <li class="nav-item"><a class="nav-link" href="info">Wat is dit?</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container mt-4">
+        <h1 class="mb-4">WooZM, platform voor Woo documenten voor één bestuursorgaan</h1>
+        
+        <h2>Wat is het?</h2>
+        <p>Met WooZM kan men een geheel naar eigen (huis)stijl vormgegeven zoekmachine voor de openbaargemaakte Woo documenten van alleen het eigen bestuursorgaan maken.</p>
+        
+        <h2>Hoe werkt het?</h2>
+        <p>Onder de motorkap gebruikt WooZM de <a href="https://woogle.wooverheid.nl">Woogle zoekmachine</a>. In de eigen versie is het zoeken beperkt tot één bestuursorgaan. Natuurlijk kan er alleen gezocht worden in Woo-documenten van het bestuursorgaan die bekend zijn bij Woogle.</p> 
+
+        <p>De eigen huisstijl wordt via CSS toegevoegd aan de zoekresultaten uit Woogle. De Woogle zoek-pagina en -resultaten komen aangeleverd in JSON, en daarmee kan eenvoudig een webpagina in eigen stijl gemaakt worden.
+        </p>
+
+        <h2>Hoe krijgt Woogle de Woo-documenten van mijn bestuursorgaan?</h2>
+        <p>Kies eerst op <a href="https://woogle.wooverheid.nl">Woogle zoekmachine</a> met de knop 'aanbieder' het eigen bestuursorgaan. Dan wordt duidelijk wat er bij Woogle beschikbaar is. Woogle crawled zelf informatie van <a href="https://open.overheid.nl">open.overheid.nl</a> en een paar andere plekken. Het ontvangt ook informatie over gepubliceerde Woo-documenten via de <a href="https://github.com/OpenWebconcept/plugin-openwoo">OpenWoo API</a> van <a href="https://openwebconcept.nl/">OpenWebConcept</a>.
+            De eenvoudigste manier om Woo documenten in Woogle en dus ook in de eigen WooZM te krijgen is via deze API. Een hoop gemeentes gebruiken dit al, onder andere Buren, Epe, Hoeksche Waard, Ridderkerk.</p>
+        
+        <h2>WooZM instellen: aan de slag</h2>
+        <p>Het maken van een eerste versie van de gepersonaliseerde Woogle is in een paar stappen met een simpel "Wordpress-achtig instelformulier" gedaan. Om meer uitgebreide aanpassingen te maken kunnen alle bestanden gedownload worden, zelf worden aangepast, en op een eigen website geplaatst. Voor de eigen WooZM is geen server of rekenkracht nodig, het omzetten van de JSON naar HTML en styling gebeurt op de browser, en het zoeken gebeurt op de servers van Woogle.</p>
+        <h3>In 5 stappen klaar:</h3>
+        <ol>
+            <li>Ga naar <a href="https://woozm.wooverheid.nl/config">https://woozm.wooverheid.nl/config</a> en kies het eigen bestuursorgaan.</li>
+            <li>Pas het uiterlijk van de webpagina aan de eigen huisstijl aan.</li>
+            <li>Stel in hoe de resultaten op de zoek-resultaten pagina getoond worden.</li>
+            <li>Stel in hoe een dossier getoond wordt. Hier kan je aangeven welke eigenschappen in de infobox getoond moeten worden. Ook de namen van de eigenschapen kunnen naar eigen smaak veranderd worden.</li>
+            <li>Klik op de blauwe knop 'update configuratie', en klaar. De eigen WooZM is nu beschikbaar op de aangegeven URL. Vanuit de eigen website kan hiernaartoe gelinked worden.</li>
+            <ul>
+                <li>Voor nog meer aanpassingen, en de pagina echt integreren in de eigen webomgeving, klik op groene knop 'Download gepersonaliseerde Woogle' en dowload daarmee alle benodigde bestanden inclusief verdere uitleg.</li>
+            </ul>
+        </ol>
+        <p>Succes!</p>
+
+        <h2>Hulp nodig?</h2>
+        <p>Mail Maarten Marx op <a href="mailto:maartenmarx@uva.nl">maartenmarx@uva.nl</a>.</p>
+    </main>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

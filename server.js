@@ -47,10 +47,23 @@ app.get('/search?:publisher_code', (req, res) => {
   res.sendFile(path.join(__dirname, 'search.html'));
 }); 
 
+app.get('/info' , (req, res) => {
+  res.sendFile(path.join(__dirname, 'info.html'));
+});
+
 // Existing route to read configuration
 app.get('/api/read_config', async (req, res) => {
   try {
     const config = await fs.readFile(configPath, 'utf8');
+    res.json(JSON.parse(config));
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to read configuration' });
+  }
+});
+
+app.get('/api/read_config/:publisher', async (req, res) => {
+  try {
+    const config = await fs.readFile(path.join(__dirname, 'data', req.params.publisher + '.json'), 'utf8');
     res.json(JSON.parse(config));
   } catch (error) {
     res.status(500).json({ error: 'Failed to read configuration' });

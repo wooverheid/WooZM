@@ -21,6 +21,8 @@ const HIDDEN_METADATA_FIELDS = [
 
 document.addEventListener('DOMContentLoaded', function () {
     
+    save_config = null;
+    
     fetch(`/data/${publisher_code}.json`)
         .then(response => response.json())
         .then(config => {
@@ -36,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (config.dossier && config.dossier.metadataLayout) {
                 adjustLayout(config.dossier.metadataLayout);
             }
+
+            save_config = config;
         })
         .catch(error => {
             console.error('Error loading configuration:', error);
@@ -61,9 +65,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!data || !data.infobox) {
                 throw new Error('Invalid data structure received from API');
             }
-            updatePageContent(data);
+            updatePageContent(data, save_config.dossier.metadata);
         })
         .catch(error => {
+            console.log(error);
             let errorMessage = 'Er is een fout opgetreden bij het ophalen van de dossiergegevens. ';
             if (error.name === 'AbortError') {
                 errorMessage += 'De server reageert niet binnen de verwachte tijd. ';
@@ -83,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.innerHTML = '<p>Geen PID opgegeven in de URL. Controleer de URL en probeer het opnieuw.</p>';
     }
 
-    function updatePageContent(data) {
+    function updatePageContent(data, metadataConfig) {
         const infobox = data.infobox;
 
         try {
@@ -108,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
             updateZipDownloadLink(infobox.dc_identifier);
             updateDocuments(infobox.foi_files, infobox);
             updateSocialLinks(infobox);
-            updateMetadataTable(infobox);
+            updateMetadataTable(infobox, metadataConfig);
             updateWooIndexInfobox(infobox);
             updateMetaAttributes(infobox);
 
@@ -131,44 +136,62 @@ document.addEventListener('DOMContentLoaded', function () {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     }
 
-    async function updateMetadataTable(infobox) {
+    async function updateMetadataTable(infobox, metadataConfig) {
         try {
+
+            
             const response = await fetch('/api/metadata_translation');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            const labels = await response.json();
 
             const tableBody = document.querySelector('.infobox table tbody');
             tableBody.innerHTML = '';
 
-            for (const [key, value] of Object.entries(infobox)) {
-                if (value && typeof value !== 'object' && !HIDDEN_METADATA_FIELDS.includes(key) && !key.startsWith('foi_wooIndex')) {
-                    const row = document.createElement('tr');
-                    
-                    const labelCell = document.createElement('td');
-                    const label = labels[key] || key;
-                    labelCell.textContent = label;
-                    
-                    const valueCell = document.createElement('td');
-                    
-                    if (key === 'dc_source') {
-                        // Special handling for dc_source
-                        const link = document.createElement('a');
-                        link.href = value;
-                        link.target = '_blank';
-                        link.textContent = 'Originele publicatie';
-                        valueCell.appendChild(link);
-                    } else {
-                        valueCell.textContent = value;
-                    }
-                    
-                    row.appendChild(labelCell);
-                    row.appendChild(valueCell);
-                    tableBody.appendChild(row);
+            for (const metadataField of metadataConfig) {
+                
+                if (metadataField.visible === false) {
+                    continue;
                 }
+                
+                if (!infobox[metadataField.key] === undefined || HIDDEN_METADATA_FIELDS.includes(metadataField.key)) {
+                    continue;
+                }
+
+                console.log(metadataField.key);
+
+                let value = infobox[metadataField.key];
+                let key = metadataField.key;
+
+                if (!value || typeof value === 'object') {
+                    continue;
+                }
+
+                const row = document.createElement('tr');
+                
+                const labelCell = document.createElement('td');
+                const label = metadataField.label || key;
+                labelCell.textContent = label;
+                
+                const valueCell = document.createElement('td');
+                
+                if (key === 'dc_source') {
+                    // Special handling for dc_source
+                    const link = document.createElement('a');
+                    link.href = value;
+                    link.target = '_blank';
+                    link.textContent = 'Originele publicatie';
+                    valueCell.appendChild(link);
+                } else {
+                    valueCell.textContent = value;
+                }
+                
+                row.appendChild(labelCell);
+                row.appendChild(valueCell);
+                tableBody.appendChild(row);
             }
         } catch (error) {
+            console.log(error);
             updateMetadataTableWithoutLabels(infobox);
         }
     }

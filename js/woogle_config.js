@@ -5,6 +5,8 @@ function updateFontPreview() {
     const headerFont = document.getElementById('font-picker-header').value;
     const uiFont = document.getElementById('font-picker-ui').value;
 
+    console.log(bodyFont, headerFont, uiFont);
+
     const fontPreview = document.getElementById('fontPreview');
     if (fontPreview) {
       fontPreview.innerHTML = `
@@ -49,7 +51,7 @@ let selectedPublisher = null; // New variable to store the selected publisher
 // Fetch initial configuration
 async function fetchConfig() {
   try {
-    const response = await fetch('/api/read_config');
+    const response = await fetch('/api/read_config/' + selectedPublisher);
     if (!response.ok) throw new Error('Failed to fetch configuration');
     config = await response.json();
     updateUIFromConfig();
@@ -68,8 +70,28 @@ function updateUIFromConfig() {
   document.getElementById('accent-color-picker').value = config.general.appearance.colors.accentColor || '#000000';
   document.getElementById('layout-direction').value = config.search.layout.direction || '';
   document.getElementById('metadataLayout').value = config.dossier.metadataLayout || '';
+
+  // Show logo
+  document.getElementById('logoImage').src = config.logo ? config.logo.path : '/assets/img/woogle.svg';
+  document.getElementById('logoPreview').classList.remove('d-none');
+
+  document.getElementById('font-picker-body').dispatchEvent(new Event('change'));
+  updateColorPreview();
   
   updateMetadataFields();
+}
+
+function updateConfigMetadataFields() {
+
+  const table = document.getElementById('metadataFieldsBody');
+  const rows = table.querySelectorAll('tr');
+
+  rows.forEach(row => {
+    const key = row.dataset.key;
+    const field = config.dossier.metadata.find(f => f.key === key);
+    field.label = row.querySelector(`input[name="label_${key}"]`).value;
+    field.visible = row.querySelector(`input[name="visible_${key}"]`).checked;
+  });
 }
 
 // Update configuration from UI inputs
@@ -85,6 +107,16 @@ function updateConfigFromUI() {
   config.dossier.metadataLayout = document.getElementById('metadataLayout').value;
 
   // If you need to update other properties, do so here
+
+  // Update metadata fields
+  const table = document.getElementById('metadataFieldsBody');
+  const rows = table.querySelectorAll('tr');
+  rows.forEach(row => {
+    const key = row.dataset.key;
+    const field = config.dossier.metadata.find(f => f.key === key);
+    field.label = row.querySelector(`input[name="label_${key}"]`).value;
+    field.visible = row.querySelector(`input[name="visible_${key}"]`).checked;
+  });
 
   // Get the logo file
   const logoUploader = document.getElementById('logo-uploader');
@@ -123,9 +155,24 @@ async function saveConfig() {
 
     if (!response.ok) throw new Error('Failed to save configuration');
     hasUnsavedChanges = false;
+
+    const alert = document.createElement('div');
+    alert.classList.add('alert', 'alert-success', 'alert-dismissable', 'fade', 'show');
+
+    alert.innerHTML = 'Gelukt! Uw gepersonaliseerde Woogle pagina staat op deze url: <a href="https://woozm.wooverheid.nl/search?publisher-code=' + updatedConfig.general.identifier + '">https://woozm.wooverheid.nl/search?publisher-code=' + updatedConfig.general.identifier + '</a>';
+
+    const title = document.querySelector('h1');
+    title.insertAdjacentElement('afterend', alert);
+    
     return true;
   } catch (error) {
-    console.error('Error saving configuration:', error);
+    const alert = document.createElement('div');
+    alert.classList.add('alert', 'alert-danger', 'alert-dismissable', 'fade', 'show');
+    alert.innerText = 'Er is iets misgegaan bij het opslaan van de configuratie. Probeer het opnieuw.';
+    
+    const title = document.querySelector('h1');
+    console.log(title);
+    title.insertAdjacentElement('afterend', alert);
     return false;
   }
 }
@@ -385,19 +432,14 @@ document.addEventListener('DOMContentLoaded', function() {
       if (selectedPublisher) {
         hasUnsavedChanges = true;
       }
+      fetchConfig();
+      updateFontPreview();
     });
   }
-
-  fetchConfig();
   
   document.getElementById('updateConfigButton').addEventListener('click', async () => {
     updateConfigFromUI();
     const success = await saveConfig();
-    if (success) {
-      alert('Configuration updated successfully!');
-    } else {
-      alert('Failed to update configuration.');
-    }
   });
   
   document.getElementById('generateFilesButton').addEventListener('click', async (event) => {
@@ -542,12 +584,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const accentColorPreview = document.getElementById('accentColorPreview');
 
   // Initialize the preview with the default color
-  updateAccentColorPreview(accentColorPicker.value);
+  // updateAccentColorPreview(accentColorPicker.value);
 
-  // Update preview when color changes
-  accentColorPicker.addEventListener('input', function() {
-    updateAccentColorPreview(this.value);
-  });
+  // // Update preview when color changes
+  // accentColorPicker.addEventListener('input', function() {
+  //   updateAccentColorPreview(this.value);
+  // });
 
   function updateAccentColorPreview(color) {
     const accentColorPreview = document.getElementById('accentColorPreview');
@@ -657,15 +699,16 @@ function updateColorPreview() {
   const accentColor = document.getElementById('accent-color-picker').value;
   const accentColorPreview = document.getElementById('accentColorPreview');
   if (accentColorPreview) {
+    console.log(document.getElementById('accent-color-picker').value);
     accentColorPreview.style.backgroundColor = accentColor;
     accentColorPreview.textContent = `Accent Kleur: ${accentColor}`;
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const accentColorPicker = document.getElementById('accent-color-picker');
-  if (accentColorPicker) {
-    accentColorPicker.addEventListener('input', updateColorPreview);
-    updateColorPreview(); // Initial update
-  }
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//   const accentColorPicker = document.getElementById('accent-color-picker');
+//   if (accentColorPicker) {
+//     accentColorPicker.addEventListener('input', updateColorPreview);
+//     updateColorPreview(); // Initial update
+//   }
+// });

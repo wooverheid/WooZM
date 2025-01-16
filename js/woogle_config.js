@@ -5,8 +5,6 @@ function updateFontPreview() {
     const headerFont = document.getElementById('font-picker-header').value;
     const uiFont = document.getElementById('font-picker-ui').value;
 
-    console.log(bodyFont, headerFont, uiFont);
-
     const fontPreview = document.getElementById('fontPreview');
     if (fontPreview) {
       fontPreview.innerHTML = `
@@ -51,12 +49,12 @@ let selectedPublisher = null; // New variable to store the selected publisher
 // Fetch initial configuration
 async function fetchConfig() {
   try {
-    const response = await fetch('/api/read_config' + `/${selectedPublisher}` ? selectedPublisher : '');
+    const response = await fetch('/api/read_config' + (selectedPublisher ? `/${selectedPublisher}` : ''));
     if (!response.ok) throw new Error('Failed to fetch configuration');
     config = await response.json();
     updateUIFromConfig();
   } catch (error) {
-    console.error('Error fetching configuration:', error);
+    updateUIDefaults();
   }
 }
 
@@ -82,7 +80,7 @@ function updateMetadataFieldsDefault() {
   fetch('/api/read_config')
     .then(response => response.json())
     .then(data => {
-      config.dossier.metadata = data.infobox;
+      config = data;
       updateMetadataFields();
     })
     .catch(error => {
@@ -92,7 +90,6 @@ function updateMetadataFieldsDefault() {
 
 // Update UI elements based on current configuration
 function updateUIFromConfig() {
-  document.getElementById('category').value = config.general.identifier || '';
   document.getElementById('publisher').value = config.general.identifier || '';
   document.getElementById('font-picker-body').value = config.general.appearance.fonts.bodyFont || '';
   document.getElementById('font-picker-header').value = config.general.appearance.fonts.headerFont || '';
@@ -201,7 +198,6 @@ async function saveConfig() {
     alert.innerText = 'Er is iets misgegaan bij het opslaan van de configuratie. Probeer het opnieuw.';
     
     const title = document.querySelector('h1');
-    console.log(title);
     title.insertAdjacentElement('afterend', alert);
     return false;
   }
@@ -729,7 +725,6 @@ function updateColorPreview() {
   const accentColor = document.getElementById('accent-color-picker').value;
   const accentColorPreview = document.getElementById('accentColorPreview');
   if (accentColorPreview) {
-    console.log(document.getElementById('accent-color-picker').value);
     accentColorPreview.style.backgroundColor = accentColor;
     accentColorPreview.textContent = `Accent Kleur: ${accentColor}`;
   }

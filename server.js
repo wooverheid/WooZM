@@ -37,6 +37,11 @@ app.get('/config', (req, res) => {
   res.sendFile(path.join(__dirname, 'config.html'));
 });
 
+app.get('/list', (req, res) => {
+  // list.html
+  res.sendFile(path.join(__dirname, 'list.html'));
+});
+
 app.get('/search', (req, res) => {
   // search
   res.sendFile(path.join(__dirname, 'search.html'));
@@ -173,6 +178,7 @@ app.get('/api/metadata_translation', async (req, res) => {
   }
 });
 
+// Route to fetch publishers with configuration
 app.get('/api/woozm_publishers', async (req, res) => {
 
   try {
@@ -184,10 +190,18 @@ app.get('/api/woozm_publishers', async (req, res) => {
       if (file.endsWith('.json') && file !== 'woogle_config.json') {
         const content = await fs.readFile(path.join(__dirname, 'data', file), 'utf8');
         const config = JSON.parse(content);
-        publishers.push((config.general.identifier, config.general.name));
+        
+        // push identifier: name
+        publishers.push({
+          identifier: config.general.identifier,
+          name: config.general.name
+        });
       }
 
     }
+
+    // Sort publishers by name
+    publishers.sort((a, b) => a.name.localeCompare(b.name));
 
     res.json(publishers);
   } catch (error) {

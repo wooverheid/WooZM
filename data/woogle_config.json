@@ -1,6 +1,7 @@
 {
   "general": {
     "identifier": "ab3",
+    "name": "Woogle",
     "appearance": {
       "fonts": {
         "bodyFont": "'Times New Roman', serif",

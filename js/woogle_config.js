@@ -124,6 +124,7 @@ function updateConfigMetadataFields() {
 // Update configuration from UI inputs
 function updateConfigFromUI() {
   config.general.identifier = document.getElementById('publisher').value;
+  config.general.name = document.getElementById('publisher')[document.getElementById('publisher').selectedIndex].text;
   config.general.appearance.fonts = {
     bodyFont: document.getElementById('font-picker-body').value,
     headerFont: document.getElementById('font-picker-header').value,

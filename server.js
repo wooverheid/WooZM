@@ -173,6 +173,28 @@ app.get('/api/metadata_translation', async (req, res) => {
   }
 });
 
+app.get('/api/woozm_publishers', async (req, res) => {
+
+  try {
+    const listFiles = await fs.readdir(path.join(__dirname, 'data'));
+    
+    const publishers = [];
+    for (let i = 0; i < listFiles.length; i++) {
+      const file = listFiles[i];
+      if (file.endsWith('.json') && file !== 'woogle_config.json') {
+        const content = await fs.readFile(path.join(__dirname, 'data', file), 'utf8');
+        const config = JSON.parse(content);
+        publishers.push((config.general.identifier, config.general.name));
+      }
+
+    }
+
+    res.json(publishers);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch publishers' });
+  }
+});
+
 app.use('package.json', express.static(path.join(__dirname, 'package.json')));
 app.use('package-lock.json', express.static(path.join(__dirname, 'package-lock.json')));
 app.use('server.js', express.static(path.join(__dirname, 'server.js')));

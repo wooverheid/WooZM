@@ -36,7 +36,12 @@ function loadLogo() {
 
   (async function() {
     for (const type of fileTypes) {
-      const src = `assets/img/${publisher_code}.${type}?t=${new Date().getTime()}`;
+      // const src = `assets/img/${publisher_code}.${type}?t=${new Date().getTime()}`;
+      src = ''
+      config.then(config => {
+        src = config.logo.path;
+      });
+      // const src = config.logo.path;
       if (await checkFileExists(src)) {
         try {
           await preloadImage(src);
@@ -77,7 +82,11 @@ function loadLogo(filename) {
 
   (async function() {
     for (const type of fileTypes) {
-      const src = `assets/img/${filename}.${type}?t=${new Date().getTime()}`;
+      // const src = `assets/img/${publisher_code}.${type}?t=${new Date().getTime()}`;
+      src = ''
+      config.then(config => {
+        src = config.logo.path;
+      });
       if (await checkFileExists(src)) {
         try {
           await preloadImage(src);
